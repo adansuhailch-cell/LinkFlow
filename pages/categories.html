@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Categories - LinkFlow</title>
+  <meta name="description" content="Browse curated content by category on LinkFlow. Education, Programming, Fitness, Entertainment, and Gaming.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="navbar navbar-solid" id="navbar">
+    <a href="../index.html" class="nav-brand">LinkFlow</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../index.html">Discover</a></li>
+      <li><a href="categories.html">Categories</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- ========== PAGE HEADER ========== -->
+  <section class="page-header">
+    <div class="container">
+      <h1 class="page-title">Categories</h1>
+      <p class="page-subtitle">Explore curated resources organized by topic</p>
+    </div>
+  </section>
+
+  <!-- ========== SEARCH & FILTERS ========== -->
+  <section class="content-band content-band-light" style="padding-top: 40px;">
+    <div class="container">
+      <!-- Search Bar -->
+      <div class="search-wrapper">
+        <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input 
+          type="text" 
+          class="search-input" 
+          id="search-input" 
+          placeholder="Search by title, platform, or description..."
+          aria-label="Search resources"
+        >
+      </div>
+
+      <!-- Category Chips -->
+      <div class="category-chips" id="category-chips">
+        <!-- Chips rendered by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== RESOURCE CARDS ========== -->
+  <section class="content-band content-band-white" style="padding-top: 40px;">
+    <div class="container">
+      <div class="cards-grid" id="cards-grid">
+        <!-- Resource cards rendered by JavaScript -->
+      </div>
+
+      <!-- No results message (hidden by default) -->
+      <div class="no-results" id="no-results" style="display: none;">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <h3>No resources found</h3>
+        <p>Try adjusting your search or filter to find what you're looking for.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="content-band content-band-dark">
+    <div class="container">
+      <div class="footer-divider" style="margin-top: 0;"></div>
+      <div class="footer-row">
+        <a href="../index.html" class="footer-brand">LinkFlow</a>
+        <div class="footer-links">
+          <a href="../index.html">Home</a>
+          <a href="categories.html">Categories</a>
+          <a href="about.html">About</a>
+        </div>
+        <div class="footer-copyright">2025 LinkFlow. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== SCRIPTS ========== -->
+  <script src="../resources.js"></script>
+  <script src="../script.js"></script>
+  <script>
+    // Initialize the page when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      // Render category chips
+      renderCategoryChips();
+      
+      // Render all resource cards
+      renderCards(resources);
+      
+      // Setup search functionality
+      setupSearch();
+      
+      // Setup navigation toggle
+      setupNavToggle();
+    });
+  </script>
+</body>
+</html>

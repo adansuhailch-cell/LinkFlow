@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinkFlow - Stop Searching. Start Discovering.</title>
+  <meta name="description" content="Hand-picked links from YouTube and Instagram, organized by category. No algorithms. No endless scrolling. Just quality content.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-brand">LinkFlow</div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#hero">Discover</a></li>
+      <li><a href="#browse">Categories</a></li>
+      <li><a href="#how-it-works">About</a></li>
+    </ul>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- ========== HERO SECTION ========== -->
+  <section class="hero" id="hero">
+    <!-- Three.js Canvas Background -->
+    <canvas id="hero-canvas"></canvas>
+
+    <!-- Subtle radial gradient overlay for text readability -->
+    <div class="hero-overlay"></div>
+
+    <!-- Hero Content -->
+    <div class="hero-content">
+      <p class="hero-eyebrow">Curated Content Directory</p>
+      <h1 class="hero-headline">Stop Searching. Start Discovering.</h1>
+      <p class="hero-subtitle">
+        Hand-picked links from YouTube and Instagram, organized by category. 
+        No algorithms. No endless scrolling. Just quality content.
+      </p>
+      <a href="#browse" class="hero-cta">Explore Resources</a>
+    </div>
+  </section>
+
+  <!-- ========== CONTENT BAND 1: CATEGORY FILTERS & SEARCH ========== -->
+  <section class="content-band content-band-light" id="browse">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Browse by Category</h2>
+        <p class="section-subtitle">Filter resources to find exactly what you need</p>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="search-wrapper">
+        <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input 
+          type="text" 
+          class="search-input" 
+          id="search-input" 
+          placeholder="Search by title, platform, or description..."
+          aria-label="Search resources"
+        >
+      </div>
+
+      <!-- Category Chips -->
+      <div class="category-chips" id="category-chips">
+        <!-- Chips rendered by JavaScript -->
+      </div>
+
+      <!-- Stats Row -->
+      <div class="stats-row">
+        <div class="stat-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+          </svg>
+          <span class="stat-value">12+ Resources</span>
+          <span class="stat-label">Curated Links</span>
+        </div>
+        <div class="stat-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+            <polyline points="2 17 12 22 22 17"></polyline>
+            <polyline points="2 12 12 17 22 12"></polyline>
+          </svg>
+          <span class="stat-value">5 Categories</span>
+          <span class="stat-label">Organized Topics</span>
+        </div>
+        <div class="stat-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
+          <span class="stat-value">YouTube & Instagram</span>
+          <span class="stat-label">Top Platforms</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTENT BAND 2: RESOURCE CARDS ========== -->
+  <section class="content-band content-band-white" id="resources">
+    <div class="container">
+      <div class="cards-grid" id="cards-grid">
+        <!-- Resource cards rendered by JavaScript -->
+      </div>
+
+      <!-- No results message (hidden by default) -->
+      <div class="no-results" id="no-results" style="display: none;">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <h3>No resources found</h3>
+        <p>Try adjusting your search or filter to find what you're looking for.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTENT BAND 3: HOW IT WORKS ========== -->
+  <section class="content-band content-band-light" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">How LinkFlow Works</h2>
+        <p class="section-subtitle">We hand-pick the best content so you don't have to waste time scrolling</p>
+      </div>
+
+      <div class="features-grid">
+        <!-- Feature Card 1 -->
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+          </div>
+          <h3 class="feature-title">Curated by Humans</h3>
+          <p class="feature-description">Every link is personally reviewed and selected to ensure quality and relevance.</p>
+        </div>
+
+        <!-- Feature Card 2 -->
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+            </svg>
+          </div>
+          <h3 class="feature-title">Smart Filtering</h3>
+          <p class="feature-description">Search and filter by category, platform, or keywords to find content instantly.</p>
+        </div>
+
+        <!-- Feature Card 3 -->
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+          </div>
+          <h3 class="feature-title">Save Time</h3>
+          <p class="feature-description">No algorithms, no distractions. Just direct access to the content you actually want.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTENT BAND 4: CTA & FOOTER ========== -->
+  <footer class="content-band content-band-dark" id="footer">
+    <div class="container">
+      <div class="cta-section">
+        <h2 class="cta-title">Ready to Discover?</h2>
+        <p class="cta-subtitle">Start exploring curated content today.</p>
+        <a href="#browse" class="cta-button">Get Started</a>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-row">
+        <div class="footer-brand">LinkFlow</div>
+        <div class="footer-links">
+          <a href="#hero">Home</a>
+          <a href="#browse">Categories</a>
+          <a href="#how-it-works">About</a>
+        </div>
+        <div class="footer-copyright">2025 LinkFlow. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== SCRIPTS ========== -->
+  <!-- Load Three.js from CDN -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+
+  <!-- Resources Data -->
+  <script src="resources.js"></script>
+
+  <!-- Main Application Script -->
+  <script type="module" src="script.js"></script>
+</body>
+</html>
