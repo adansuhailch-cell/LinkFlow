@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -21,8 +21,9 @@
     <div class="nav-brand">LinkFlow</div>
     <ul class="nav-links" id="nav-links">
       <li><a href="#hero">Discover</a></li>
-      <li><a href="./pages/categories.html">Categories</a></li>
-      <li><a href="./pages/about.html">About</a></li>
+      <li><a href="#browse">Categories</a></li>
+      <li><a href="#custom-links-section">My Links</a></li>
+      <li><a href="#how-it-works">About</a></li>
     </ul>
     <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu">
       <span></span>
@@ -33,19 +34,13 @@
 
   <!-- ========== HERO SECTION ========== -->
   <section class="hero" id="hero">
-    <!-- Three.js Canvas Background -->
     <canvas id="hero-canvas"></canvas>
-
-    <!-- Subtle radial gradient overlay for text readability -->
     <div class="hero-overlay"></div>
-
-    <!-- Hero Content -->
     <div class="hero-content">
       <p class="hero-eyebrow">Curated Content Directory</p>
       <h1 class="hero-headline">Stop Searching. Start Discovering.</h1>
       <p class="hero-subtitle">
-        Hand-picked links from YouTube and Instagram, organized by category. 
-        No algorithms. No endless scrolling. Just quality content.
+        Find exact links to motivational reels, educational shorts, entertainment videos, tech tutorials, cooking guides, and much more—organized by category.
       </p>
       <a href="#browse" class="hero-cta">Explore Resources</a>
     </div>
@@ -56,7 +51,7 @@
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">Browse by Category</h2>
-        <p class="section-subtitle">Filter resources to find exactly what you need</p>
+        <p class="section-subtitle">Search and filter to find exactly what you need</p>
       </div>
 
       <!-- Search Bar -->
@@ -69,7 +64,7 @@
           type="text" 
           class="search-input" 
           id="search-input" 
-          placeholder="Search by title, platform, or description..."
+          placeholder="Search by keyword: web development, motivation, cooking..."
           aria-label="Search resources"
         >
       </div>
@@ -86,7 +81,7 @@
             <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
             <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
           </svg>
-          <span class="stat-value">12+ Resources</span>
+          <span class="stat-value" id="stat-resources">30+ Resources</span>
           <span class="stat-label">Curated Links</span>
         </div>
         <div class="stat-item">
@@ -95,7 +90,7 @@
             <polyline points="2 17 12 22 22 17"></polyline>
             <polyline points="2 12 12 17 22 12"></polyline>
           </svg>
-          <span class="stat-value">5 Categories</span>
+          <span class="stat-value">8 Categories</span>
           <span class="stat-label">Organized Topics</span>
         </div>
         <div class="stat-item">
@@ -104,8 +99,8 @@
             <line x1="8" y1="21" x2="16" y2="21"></line>
             <line x1="12" y1="17" x2="12" y2="21"></line>
           </svg>
-          <span class="stat-value">YouTube & Instagram</span>
-          <span class="stat-label">Top Platforms</span>
+          <span class="stat-value">Multiple Platforms</span>
+          <span class="stat-label">YouTube, Instagram & More</span>
         </div>
       </div>
     </div>
@@ -118,7 +113,7 @@
         <!-- Resource cards rendered by JavaScript -->
       </div>
 
-      <!-- No results message (hidden by default) -->
+      <!-- No results message -->
       <div class="no-results" id="no-results" style="display: none;">
         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="11" cy="11" r="8"></circle>
@@ -130,62 +125,109 @@
     </div>
   </section>
 
+  <!-- ========== CUSTOM LINKS SECTION ========== -->
+  <section class="content-band content-band-light" id="custom-links-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">My Custom Links</h2>
+        <p class="section-subtitle">Add your favorite links and share them with others</p>
+      </div>
+
+      <!-- Add Link Form -->
+      <div class="add-link-form-wrapper">
+        <form id="add-link-form" class="add-link-form">
+          <div class="form-group">
+            <input type="text" id="custom-title" placeholder="Link Title" required>
+          </div>
+          <div class="form-group">
+            <input type="url" id="custom-url" placeholder="https://example.com" required>
+          </div>
+          <div class="form-group">
+            <input type="text" id="custom-description" placeholder="Brief description (optional)">
+          </div>
+          <div class="form-group">
+            <select id="custom-category">
+              <option value="Education">Education</option>
+              <option value="Tech">Tech</option>
+              <option value="Entertainment">Entertainment</option>
+              <option value="Motivational">Motivational</option>
+              <option value="Cooking">Cooking</option>
+              <option value="Fitness">Fitness</option>
+              <option value="Business">Business</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <button type="submit" class="btn-add-link">+ Add Link</button>
+        </form>
+      </div>
+
+      <!-- Custom Links Display -->
+      <div class="custom-links-grid" id="custom-links-grid">
+        <!-- Custom links rendered by JavaScript -->
+      </div>
+
+      <!-- Share Custom Links -->
+      <div class="share-section" id="share-section" style="display: none;">
+        <button id="export-links-btn" class="btn-export">📥 Export My Links</button>
+        <button id="share-links-btn" class="btn-share">🔗 Get Share Link</button>
+      </div>
+    </div>
+  </section>
+
   <!-- ========== CONTENT BAND 3: HOW IT WORKS ========== -->
   <section class="content-band content-band-light" id="how-it-works">
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">How LinkFlow Works</h2>
-        <p class="section-subtitle">We hand-pick the best content so you don't have to waste time scrolling</p>
+        <p class="section-subtitle">Smart search, organized categories, and custom collections</p>
       </div>
 
       <div class="features-grid">
-        <!-- Feature Card 1 -->
         <div class="feature-card">
-          <div class="feature-icon">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-              <polyline points="14 2 14 8 20 8"></polyline>
-              <line x1="16" y1="13" x2="8" y2="13"></line>
-              <line x1="16" y1="17" x2="8" y2="17"></line>
-              <polyline points="10 9 9 9 8 9"></polyline>
-            </svg>
-          </div>
+          <div class="feature-icon">🔍</div>
+          <h3 class="feature-title">Smart Search</h3>
+          <p class="feature-description">Search by keyword to find exact resources across all categories instantly.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">📚</div>
+          <h3 class="feature-title">8 Categories</h3>
+          <p class="feature-description">Education, Tech, Entertainment, Motivational, Cooking, Fitness, Business & more.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">⭐</div>
+          <h3 class="feature-title">Custom Collections</h3>
+          <p class="feature-description">Add your favorite links and organize them in your personal collection.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🎯</div>
           <h3 class="feature-title">Curated by Humans</h3>
-          <p class="feature-description">Every link is personally reviewed and selected to ensure quality and relevance.</p>
+          <p class="feature-description">Every default link is personally reviewed for quality and relevance.</p>
         </div>
 
-        <!-- Feature Card 2 -->
         <div class="feature-card">
-          <div class="feature-icon">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
-            </svg>
-          </div>
-          <h3 class="feature-title">Smart Filtering</h3>
-          <p class="feature-description">Search and filter by category, platform, or keywords to find content instantly.</p>
+          <div class="feature-icon">🔗</div>
+          <h3 class="feature-title">Easy Sharing</h3>
+          <p class="feature-description">Export and share your custom link collections with friends and communities.</p>
         </div>
 
-        <!-- Feature Card 3 -->
         <div class="feature-card">
-          <div class="feature-icon">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-              <polyline points="12 6 12 12 16 14"></polyline>
-            </svg>
-          </div>
-          <h3 class="feature-title">Save Time</h3>
-          <p class="feature-description">No algorithms, no distractions. Just direct access to the content you actually want.</p>
+          <div class="feature-icon">⚡</div>
+          <h3 class="feature-title">No Algorithms</h3>
+          <p class="feature-description">Direct access to quality content. No endless scrolling, no distractions.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== CONTENT BAND 4: CTA & FOOTER ========== -->
+  <!-- ========== FOOTER ========== -->
   <footer class="content-band content-band-dark" id="footer">
     <div class="container">
       <div class="cta-section">
         <h2 class="cta-title">Ready to Discover?</h2>
-        <p class="cta-subtitle">Start exploring curated content today.</p>
+        <p class="cta-subtitle">Start exploring curated content and building your personal library today.</p>
         <a href="#browse" class="cta-button">Get Started</a>
       </div>
 
@@ -196,6 +238,7 @@
         <div class="footer-links">
           <a href="#hero">Home</a>
           <a href="#browse">Categories</a>
+          <a href="#custom-links-section">My Links</a>
           <a href="#how-it-works">About</a>
         </div>
         <div class="footer-copyright">2025 LinkFlow. All rights reserved.</div>
@@ -215,9 +258,12 @@
   </script>
 
   <!-- Resources Data -->
-  <script src="resources.js"></script>
+  <script src="js/resources.js"></script>
+
+  <!-- Utility Functions -->
+  <script src="js/utils.js"></script>
 
   <!-- Main Application Script -->
-  <script type="module" src="script.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>
